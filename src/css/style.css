@@ -13,10 +13,62 @@ body {
   height: 100%;
 }
 body main .main-background {
+  position: relative;
   background-image: url("../img/bg-main-mobile.png");
   background-position: center;
   background-size: cover;
-  aspect-ratio: 375/120;
+  height: 280px;
+}
+body main .main-background .card-plate {
+  position: absolute;
+  background-image: url("../img/bg-card-back.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 300px;
+  aspect-ratio: 447/245;
+}
+body main .main-background .card-reverse {
+  top: 50px;
+  right: 20px;
+  background-image: url("../img/bg-card-back.png");
+}
+body main .main-background .card-reverse__box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body main .main-background .card-reverse__box-cvv {
+  position: absolute;
+  top: 40%;
+  right: 40px;
+}
+body main .main-background .card-reverse__box-cvv p {
+  color: white;
+}
+body main .main-background .card-front {
+  bottom: -27px;
+  left: 20px;
+  background-image: url("../img/bg-card-front.png");
+}
+body main .main-background .card-front__box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+body main .main-background .card-front__box-decoration {
+  position: absolute;
+}
+body main .main-background .card-front__box-text {
+  position: absolute;
+}
+body main .main-background .card-front__box-text--nr {
+  position: relative;
+}
+body main .main-background .card-front__box-text--name {
+  position: relative;
+}
+body main .main-background .card-front__box-text--valid-date {
+  position: relative;
 }
 
 /*# sourceMappingURL=style.css.map */
