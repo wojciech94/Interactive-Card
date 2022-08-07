@@ -1,11 +1,63 @@
-@import url("./_colors.scss");
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
   font-size: 62.5%;
   font-family: "Space Grotesk", sans-serif;
+}
+
+label {
+  color: rgb(33, 9, 47);
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 5px 0;
+}
+
+input {
+  max-width: 300px;
+  padding: 5px 5px;
+  color: hsl(279deg, 6%, 55%);
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: 2px solid;
+  border-radius: 8px;
+}
+
+input::placeholder {
+  color: hsl(270deg, 3%, 87%);
+}
+
+.button-part {
+  position: relative;
+  margin: 10px auto;
+}
+.button-part .confirm-btn,
+.button-part .continue-btn {
+  font-size: 2rem;
+  padding: 16px 100px;
+  width: 100%;
+  max-width: 280px;
+  border: 2px solid transparent;
+  color: hsl(0deg, 0%, 100%);
+  background-color: rgb(33, 9, 47);
+  border-radius: 8px;
+}
+.button-part .confirm-btn:hover,
+.button-part .continue-btn:hover {
+  border: 2px solid rgb(33, 9, 47);
+  background: linear-gradient(135deg, hsl(249deg, 99%, 64%), hsl(278deg, 93%, 30%));
+  outline: none;
+  cursor: pointer;
+}
+.button-part .confirm-btn:focus,
+.button-part .continue-btn:focus {
+  border: 2px solid rgb(33, 9, 47);
+  background: linear-gradient(135deg, hsl(249deg, 99%, 64%), hsl(278deg, 93%, 30%));
+  outline: none;
 }
 
 body {
@@ -39,7 +91,7 @@ body main .main-background .card-reverse__box {
 }
 body main .main-background .card-reverse__box-cvv {
   position: absolute;
-  top: 40%;
+  top: 45%;
   right: 40px;
 }
 body main .main-background .card-reverse__box-cvv p {
@@ -57,18 +109,214 @@ body main .main-background .card-front__box {
 }
 body main .main-background .card-front__box-decoration {
   position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 25%;
+  height: 30%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../img/card-logo.svg");
+  color: hsl(0deg, 0%, 100%);
 }
 body main .main-background .card-front__box-text {
   position: absolute;
+  padding: 20px 15px;
+  top: 40%;
+  color: hsl(0deg, 0%, 100%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 body main .main-background .card-front__box-text--nr {
-  position: relative;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 body main .main-background .card-front__box-text--name {
-  position: relative;
+  font-size: 1.4rem;
 }
 body main .main-background .card-front__box-text--valid-date {
+  font-size: 1.4rem;
+}
+body main .main-form {
+  display: none;
+}
+body main .main-form-active {
   position: relative;
+  margin: 50px auto;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+body main .main-form-active .form-group {
+  width: 300px;
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+body main .main-form-active .form-group .date-part {
+  display: flex;
+  flex-direction: column;
+}
+body main .main-form-active .form-group .date-part .date-inputs input {
+  max-width: 96px;
+}
+body main .main-form-active .form-group .cvc-part {
+  display: flex;
+  flex-direction: column;
+}
+body main .main-form-active .form-group .cvc-part input {
+  max-width: 80px;
+}
+body main .main-form-active .form-group-row {
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
+body main .main-form-active .button-part {
+  margin: 0px auto;
+}
+body main .main-complete {
+  display: none;
+  position: relative;
+  margin: 50px auto;
+  width: 100%;
+}
+body main .main-complete-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body main .main-complete-active .complete-icon {
+  margin: 40px;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url("../img/icon-complete.svg");
+}
+body main .main-complete-active h2 {
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  font-weight: normal;
+  color: rgb(33, 9, 47);
+  font-size: 3.2rem;
+  text-transform: uppercase;
+}
+body main .main-complete-active p {
+  margin: 10px;
+  font-size: 1.6rem;
+  color: hsl(279deg, 6%, 55%);
+}
+body main .main-complete-active .button-part {
+  margin: 22px auto;
+}
+body .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+body .footer div {
+  padding: 10px 10px;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+  body main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  body main .main-background {
+    background-image: url("../img/bg-main-desktop.png");
+    width: 450px;
+    height: 100vh;
+  }
+  body main .main-background .card-reverse {
+    top: 480px;
+    left: 20vw;
+  }
+  body main .main-background .card-front {
+    top: 250px;
+    left: 15vw;
+  }
+  body main .main-form-active {
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  body main .main-complete {
+    width: 300px;
+    margin: 0 auto;
+  }
+  body main .main-complete-active .complete-icon {
+    margin: 50px;
+  }
+  body .footer {
+    bottom: 0;
+    left: auto;
+    right: 0;
+  }
+}
+@media (min-width: 1200px) {
+  body main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  body main .main-background {
+    background-image: url("../img/bg-main-desktop.png");
+    width: 600px;
+    height: 100vh;
+  }
+  body main .main-background .card-plate {
+    width: 400px;
+  }
+  body main .main-background .card-reverse {
+    top: 480px;
+    left: 20vw;
+  }
+  body main .main-background .card-reverse__box-cvv {
+    top: 45%;
+    right: 42px;
+  }
+  body main .main-background .card-reverse__box-cvv p {
+    font-size: 1.4rem;
+  }
+  body main .main-background .card-front {
+    top: 250px;
+    left: 15vw;
+  }
+  body main .main-background .card-front__box-text--nr {
+    width: 100%;
+    font-size: 2.4rem;
+    margin-bottom: 1.6rem;
+  }
+  body main .main-background .card-front__box-text--name {
+    font-size: 1.6rem;
+  }
+  body main .main-background .card-front__box-text--valid-date {
+    font-size: 1.6rem;
+  }
+  body main .main-complete {
+    width: 400px;
+  }
+  body main .main-complete-active .complete-icon {
+    margin: 35px;
+    width: 100px;
+    height: 100px;
+  }
+  body main .main-complete-active h2 {
+    margin-bottom: 20px;
+  }
+  body main .main-complete-active .continue-btn {
+    padding: 16px 100px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

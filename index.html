@@ -45,32 +45,39 @@
         </div>
       </div>
     </section>
-    <section class="main-form">
-      <div class="name-part">
+    <section class="main-form main-form-active">
+      <div class="form-group name-part">
         <label for="name">Cardholder Name</label>
-        <input type="text" id="name"> e.g. Jane Appleseed
+        <input type="text" id="name" placeholder="e.g. Jane Appleseed">
       </div>
-      <div class="number-part">
+      <div class="form-group number-part">
         <label for="number">Card Number</label>
-        <input type="text" id="number">e.g. 1234 5678 9123 0000
+        <input type="text" id="number" placeholder="e.g. 1234 5678 9123 0000">
       </div>
-      <div class="date-part">
-        <label for="date">Exp. Date (MM/YY)</label>
-        <input type="text" id="date">MM
-        <input type="text" id="date">YY
-      </div>
-      <div class="cvc-part">
-        <label for="cvc">CVC</label>
-        <input type="text" id="cvc">e.g. 123
+      <div class="form-group form-group-row">
+        <div class="date-part">
+          <label for="date">Exp. Date (MM/YY)</label>
+          <div class="date-inputs">
+            <input type="text" id="date" placeholder="MM">
+            <input type="text" id="date" placeholder="YY">
+          </div>
+        </div>
+        <div class="cvc-part">
+          <label for="cvc">CVC</label>
+          <input type="text" id="cvc" placeholder="e.g. 123">
+        </div>
       </div>
       <div class="button-part">
         <button class="confirm-btn">Confirm</button>
       </div>
     </section>
     <section class="main-complete">
+      <div class="complete-icon"></div>
       <h2>Thank you!</h2>
       <p>We've added your card details</p>
-      <button class="continue-btn">Continue</button>
+      <div class="button-part">
+        <button class="continue-btn">Continue</button>
+      </div>
     </section>
   </main>
 
@@ -80,6 +87,8 @@
       Coded by <a href="#">Wojciech94</a>.
     </div>
   </footer>
+
+  <script src="./src/js/main.js"></script>
 </body>
 
 </html>
