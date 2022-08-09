@@ -11,7 +11,7 @@ const inputCvc = document.querySelector('.input-cvc')
 
 const cardName = document.querySelector('.card-name')
 const nrParts = document.querySelectorAll('.nr-part')
-const validDate = document.querySelector('.valid-date')
+const expireDate = document.querySelector('.valid-date')
 const cardCvc = document.querySelector('.card-cvc')
 
 const toggleView = () => {
@@ -19,34 +19,60 @@ const toggleView = () => {
 	mainComplete.classList.toggle('main-complete-active')
 }
 
-const checkName = e => {
-	let name = e.target.value
-	cardName.textContent = name
+const validInputs = () => {
+	if (checkName() && checkNumber() && checkMonth() && checkYear() && checkCvc()) {
+		mainForm.classList.toggle('main-form-active')
+		mainComplete.classList.toggle('main-complete-active')
+	}
+}
+
+const updateName = e => {
+	cardName.textContent = e.target.value
+}
+
+const checkName = () => {
+	let nameReg = /(^[a-z][a-z]*\s[a-z][a-z]*$)/gi
+	return nameReg.test(inputName.value)
 }
 
 let month = '00'
 let year = '00'
 
-const checkMonth = e => {
+const updateMonth = e => {
 	month = e.target.value
 	updateDate()
 }
 
-const checkYear = e => {
+const checkMonth = () => {
+	let monthReg = /^\d{2}$/
+	return monthReg.test(month)
+}
+
+const updateYear = e => {
 	year = e.target.value
 	updateDate()
 }
 
-const updateDate = () => {
-	validDate.textContent = month.concat('/', year)
+const checkYear = () => {
+	let yearReg = /^\d{2,4}$/
+	return yearReg.test(year)
 }
 
-const checkCvc = e => {
+const updateDate = () => {
+	expireDate.textContent = month.concat('/', year)
+}
+
+const updateCvc = e => {
 	let cvc = e.target.value
 	cardCvc.textContent = cvc
 }
 
-const checkNumber = e => {
+const checkCvc = () => {
+	let cvcReg = /(^[0-9]{3}$)/
+	return cvcReg.test(inputCvc.value)
+}
+
+const updateNumber = e => {
 	let val = e.target.value
 	if (val.length <= 16) {
 		val = val.concat('0'.repeat(16 - val.length))
@@ -57,11 +83,16 @@ const checkNumber = e => {
 	}
 }
 
-confirmBtn.addEventListener('click', toggleView)
+const checkNumber = () => {
+	let nrReg = /^\d{16}$/
+	return nrReg.test(inputNumber.value)
+}
+
+confirmBtn.addEventListener('click', validInputs)
 continueBtn.addEventListener('click', toggleView)
 
-inputName.addEventListener('input', checkName)
-inputNumber.addEventListener('input', checkNumber)
-inputMonth.addEventListener('input', checkMonth)
-inputYear.addEventListener('input', checkYear)
-inputCvc.addEventListener('input', checkCvc)
+inputName.addEventListener('input', updateName)
+inputNumber.addEventListener('input', updateNumber)
+inputMonth.addEventListener('input', updateMonth)
+inputYear.addEventListener('input', updateYear)
+inputCvc.addEventListener('input', updateCvc)
