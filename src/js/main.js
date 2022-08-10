@@ -17,6 +17,7 @@ const cardCvc = document.querySelector('.card-cvc')
 const toggleView = () => {
 	mainForm.classList.toggle('main-form-active')
 	mainComplete.classList.toggle('main-complete-active')
+	resetInputs()
 }
 
 const validInputs = () => {
@@ -24,6 +25,21 @@ const validInputs = () => {
 		mainForm.classList.toggle('main-form-active')
 		mainComplete.classList.toggle('main-complete-active')
 	}
+}
+
+const resetInputs = () => {
+	inputName.value = ''
+	inputNumber.value = ''
+	inputMonth.value = ''
+	inputYear.value = ''
+	inputCvc.value = ''
+
+	cardName.textContent = 'Jane Applessed'
+	nrParts.forEach(part => {
+		part.textContent = '0000'
+	})
+	expireDate.textContent = '00/00'
+	cardCvc.textContent = '000'
 }
 
 const updateName = e => {

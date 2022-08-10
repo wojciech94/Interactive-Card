@@ -10,7 +10,7 @@ html {
 }
 
 label {
-  color: rgb(33, 9, 47);
+  color: hwb(278 4% 82%);
   font-size: 2rem;
   font-weight: bold;
   letter-spacing: 1px;
@@ -20,7 +20,7 @@ label {
 input {
   max-width: 300px;
   padding: 5px 5px;
-  color: hsl(279deg, 6%, 55%);
+  color: rgb(142, 133, 147);
   font-size: 1.8rem;
   font-weight: bold;
   border: 2px solid;
@@ -28,7 +28,7 @@ input {
 }
 
 input::placeholder {
-  color: hsl(270deg, 3%, 87%);
+  color: rgb(222, 221, 223);
 }
 
 .button-part {
@@ -42,21 +42,22 @@ input::placeholder {
   width: 100%;
   max-width: 280px;
   border: 2px solid transparent;
-  color: hsl(0deg, 0%, 100%);
-  background-color: rgb(33, 9, 47);
+  color: rgb(255, 255, 255);
+  background-color: hwb(278 4% 82%);
   border-radius: 8px;
+  transition: background-color 0.3s;
 }
 .button-part .confirm-btn:hover,
 .button-part .continue-btn:hover {
-  border: 2px solid rgb(33, 9, 47);
-  background: linear-gradient(135deg, hsl(249deg, 99%, 64%), hsl(278deg, 93%, 30%));
+  border: 2px solid hwb(278 4% 82%);
+  background-color: rgb(100, 72, 254);
   outline: none;
   cursor: pointer;
 }
 .button-part .confirm-btn:focus,
 .button-part .continue-btn:focus {
-  border: 2px solid rgb(33, 9, 47);
-  background: linear-gradient(135deg, hsl(249deg, 99%, 64%), hsl(278deg, 93%, 30%));
+  border: 2px solid hwb(278 4% 82%);
+  background-color: rgb(100, 72, 254);
   outline: none;
 }
 
@@ -116,13 +117,13 @@ body main .main-background .card-front__box-decoration {
   background-size: contain;
   background-repeat: no-repeat;
   background-image: url("../img/card-logo.svg");
-  color: hsl(0deg, 0%, 100%);
+  color: rgb(255, 255, 255);
 }
 body main .main-background .card-front__box-text {
   position: absolute;
   padding: 20px 15px;
   top: 40%;
-  color: hsl(0deg, 0%, 100%);
+  color: rgb(255, 255, 255);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -201,14 +202,14 @@ body main .main-complete-active h2 {
   margin-bottom: 10px;
   letter-spacing: 2px;
   font-weight: normal;
-  color: rgb(33, 9, 47);
+  color: hwb(278 4% 82%);
   font-size: 3.2rem;
   text-transform: uppercase;
 }
 body main .main-complete-active p {
   margin: 10px;
   font-size: 1.6rem;
-  color: hsl(279deg, 6%, 55%);
+  color: rgb(142, 133, 147);
 }
 body main .main-complete-active .button-part {
   margin: 22px auto;
