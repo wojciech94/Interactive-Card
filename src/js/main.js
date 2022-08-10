@@ -9,6 +9,11 @@ const inputMonth = document.querySelector('.input-mm')
 const inputYear = document.querySelector('.input-yy')
 const inputCvc = document.querySelector('.input-cvc')
 
+const nameDebug = document.querySelector('.name-part__debug')
+const numberDebug = document.querySelector('.number-part__debug')
+const dateDebug = document.querySelector('.date-part__debug')
+const cvcDebug = document.querySelector('.cvc-part__debug')
+
 const cardName = document.querySelector('.card-name')
 const nrParts = document.querySelectorAll('.nr-part')
 const expireDate = document.querySelector('.valid-date')
@@ -47,8 +52,22 @@ const updateName = e => {
 }
 
 const checkName = () => {
-	let nameReg = /(^[a-z][a-z]*\s[a-z][a-z]*$)/gi
-	return nameReg.test(inputName.value)
+	let nameReg = /(^[a-z][a-z]*\s[a-z][a-z]*$)|(^[a-z][a-z]*\s[a-z][a-z]*\s[a-z][a-z]*$)/gi
+	let emptyCondition = inputName.value.length == 0
+	let result = nameReg.test(inputName.value)
+	if (emptyCondition) {
+		nameDebug.textContent = 'Empty value'
+		inputName.classList.add('error-border')
+		return false
+	} else if (!result) {
+		nameDebug.textContent = 'Wrong format, only alphabetical (2 or 3 words)'
+		inputName.classList.add('error-border')
+		return false
+	} else {
+		nameDebug.textContent = ''
+		inputName.classList.remove('error-border')
+		return true
+	}
 }
 
 let month = '00'
@@ -61,7 +80,26 @@ const updateMonth = e => {
 
 const checkMonth = () => {
 	let monthReg = /^\d{2}$/
-	return monthReg.test(month)
+	let emptyCondition = inputMonth.value.length == 0
+	let month = parseInt(inputMonth.value)
+	let result = monthReg.test(inputMonth.value)
+	if (emptyCondition) {
+		dateDebug.textContent = 'Empty value'
+		inputMonth.classList.add('error-border')
+		return false
+	} else if (!result) {
+		dateDebug.textContent = 'Wrong format. Required 2 numbers'
+		inputMonth.classList.add('error-border')
+		return false
+	} else if (month < 1 || month > 12) {
+		dateDebug.textContent = 'Month cannot be lower than 1 or higher than 12'
+		inputMonth.classList.add('error-border')
+		return false
+	} else {
+		dateDebug.textContent = ''
+		inputMonth.classList.remove('error-border')
+		return true
+	}
 }
 
 const updateYear = e => {
@@ -70,8 +108,28 @@ const updateYear = e => {
 }
 
 const checkYear = () => {
-	let yearReg = /^\d{2,4}$/
-	return yearReg.test(year)
+	let yearReg = /^\d{2}$|^\d{4}$/
+	let emptyCondition = inputYear.value.length == 0
+	let minYear = new Date().getFullYear() % 100
+	let year = parseInt(inputYear.value) % 100
+	let result = yearReg.test(inputYear.value)
+	if (emptyCondition) {
+		dateDebug.textContent = 'Empty value'
+		inputYear.classList.add('error-border')
+		return false
+	} else if (!result) {
+		dateDebug.textContent = 'Wrong format. Required 2 or 4 numbers'
+		inputYear.classList.add('error-border')
+		return false
+	} else if (year < minYear) {
+		dateDebug.textContent = 'Expired year cannot be passed'
+		inputYear.classList.add('error-border')
+		return false
+	} else {
+		dateDebug.textContent = ''
+		inputYear.classList.remove('error-border')
+		return result
+	}
 }
 
 const updateDate = () => {
@@ -85,7 +143,21 @@ const updateCvc = e => {
 
 const checkCvc = () => {
 	let cvcReg = /(^[0-9]{3}$)/
-	return cvcReg.test(inputCvc.value)
+	let emptyCondition = inputCvc.value.length == 0
+	let result = cvcReg.test(inputCvc.value)
+	if (emptyCondition) {
+		cvcDebug.textContent = 'Empty value'
+		inputCvc.classList.add('error-border')
+		return false
+	} else if (!result) {
+		cvcDebug.textContent = 'Wrong format. Required 3 numbers'
+		inputCvc.classList.add('error-border')
+		return false
+	} else {
+		cvcDebug.textContent = ''
+		inputCvc.classList.remove('error-border')
+		return result
+	}
 }
 
 const updateNumber = e => {
@@ -101,7 +173,21 @@ const updateNumber = e => {
 
 const checkNumber = () => {
 	let nrReg = /^\d{16}$/
-	return nrReg.test(inputNumber.value)
+	let emptyCondition = inputNumber.value.length == 0
+	let result = nrReg.test(inputNumber.value)
+	if (emptyCondition) {
+		numberDebug.textContent = 'Empty value'
+		inputNumber.classList.add('error-border')
+		return false
+	} else if (!result) {
+		numberDebug.textContent = 'Wrong format. Required 16 numbers'
+		inputNumber.classList.add('error-border')
+		return false
+	} else {
+		numberDebug.textContent = ''
+		inputNumber.classList.remove('error-border')
+		return result
+	}
 }
 
 confirmBtn.addEventListener('click', validInputs)

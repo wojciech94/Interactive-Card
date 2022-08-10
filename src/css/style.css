@@ -31,6 +31,16 @@ input::placeholder {
   color: rgb(222, 221, 223);
 }
 
+.debug {
+  margin-top: 5px;
+  padding: 2px 5px;
+  color: rgb(255, 82, 82);
+}
+
+.error-border {
+  border: 2px solid rgb(255, 82, 82);
+}
+
 .button-part {
   position: relative;
   margin: 10px auto;
@@ -93,7 +103,7 @@ body main .main-background .card-reverse__box {
 body main .main-background .card-reverse__box-cvc {
   position: absolute;
   top: 45%;
-  right: 40px;
+  right: 42px;
 }
 body main .main-background .card-reverse__box-cvc p {
   color: white;
@@ -152,7 +162,6 @@ body main .main-form-active {
 }
 body main .main-form-active .form-group {
   width: 300px;
-  padding: 10px 0px;
   display: flex;
   flex-direction: column;
 }
@@ -160,15 +169,24 @@ body main .main-form-active .form-group .date-part {
   display: flex;
   flex-direction: column;
 }
+body main .main-form-active .form-group .date-part label {
+  font-size: 1.8rem;
+}
 body main .main-form-active .form-group .date-part .date-inputs input {
-  max-width: 96px;
+  max-width: 90px;
 }
 body main .main-form-active .form-group .cvc-part {
   display: flex;
   flex-direction: column;
 }
+body main .main-form-active .form-group .cvc-part label {
+  font-size: 1.8rem;
+}
 body main .main-form-active .form-group .cvc-part input {
-  max-width: 80px;
+  max-width: 94px;
+}
+body main .main-form-active .form-group .cvc-part__debug {
+  max-width: 94px;
 }
 body main .main-form-active .form-group-row {
   flex-direction: row;
@@ -176,7 +194,7 @@ body main .main-form-active .form-group-row {
   gap: 20px;
 }
 body main .main-form-active .button-part {
-  margin: 0px auto;
+  margin: 10px auto;
 }
 body main .main-complete {
   display: none;
@@ -282,11 +300,11 @@ body .footer div {
     top: 480px;
     left: 20vw;
   }
-  body main .main-background .card-reverse__box-cvv {
+  body main .main-background .card-reverse__box-cvc {
     top: 45%;
-    right: 42px;
+    right: 50px;
   }
-  body main .main-background .card-reverse__box-cvv p {
+  body main .main-background .card-reverse__box-cvc p {
     font-size: 1.4rem;
   }
   body main .main-background .card-front {
