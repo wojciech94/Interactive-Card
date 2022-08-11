@@ -25,6 +25,7 @@ const toggleView = () => {
 	resetInputs()
 }
 
+//Validating all forms
 const validInputs = () => {
 	if (checkName() && checkNumber() && checkMonth() && checkYear() && checkCvc()) {
 		mainForm.classList.toggle('main-form-active')
@@ -32,6 +33,7 @@ const validInputs = () => {
 	}
 }
 
+//Reset cards and form fields after correct fill
 const resetInputs = () => {
 	inputName.value = ''
 	inputNumber.value = ''
@@ -47,10 +49,45 @@ const resetInputs = () => {
 	cardCvc.textContent = '000'
 }
 
+//Update sections - update card details in real-time
 const updateName = e => {
 	cardName.textContent = e.target.value
 }
 
+let month = '00'
+let year = '00'
+
+const updateMonth = e => {
+	month = e.target.value
+	updateDate()
+}
+
+const updateYear = e => {
+	year = e.target.value
+	updateDate()
+}
+
+const updateDate = () => {
+	expireDate.textContent = month.concat('/', year)
+}
+
+const updateCvc = e => {
+	let cvc = e.target.value
+	cardCvc.textContent = cvc
+}
+
+const updateNumber = e => {
+	let val = e.target.value
+	if (val.length <= 16) {
+		val = val.concat('0'.repeat(16 - val.length))
+		nrParts[0].textContent = val.slice(0, 4)
+		nrParts[1].textContent = val.slice(4, 8)
+		nrParts[2].textContent = val.slice(8, 12)
+		nrParts[3].textContent = val.slice(12)
+	}
+}
+
+//Validating RegExp
 const checkName = () => {
 	let nameReg = /(^[a-z][a-z]*\s[a-z][a-z]*$)|(^[a-z][a-z]*\s[a-z][a-z]*\s[a-z][a-z]*$)/gi
 	let emptyCondition = inputName.value.length == 0
@@ -70,12 +107,23 @@ const checkName = () => {
 	}
 }
 
-let month = '00'
-let year = '00'
-
-const updateMonth = e => {
-	month = e.target.value
-	updateDate()
+const checkNumber = () => {
+	let nrReg = /^\d{16}$/
+	let emptyCondition = inputNumber.value.length == 0
+	let result = nrReg.test(inputNumber.value)
+	if (emptyCondition) {
+		numberDebug.textContent = 'Empty value'
+		inputNumber.classList.add('error-border')
+		return false
+	} else if (!result) {
+		numberDebug.textContent = 'Wrong format. Required 16 numbers'
+		inputNumber.classList.add('error-border')
+		return false
+	} else {
+		numberDebug.textContent = ''
+		inputNumber.classList.remove('error-border')
+		return result
+	}
 }
 
 const checkMonth = () => {
@@ -100,11 +148,6 @@ const checkMonth = () => {
 		inputMonth.classList.remove('error-border')
 		return true
 	}
-}
-
-const updateYear = e => {
-	year = e.target.value
-	updateDate()
 }
 
 const checkYear = () => {
@@ -132,15 +175,6 @@ const checkYear = () => {
 	}
 }
 
-const updateDate = () => {
-	expireDate.textContent = month.concat('/', year)
-}
-
-const updateCvc = e => {
-	let cvc = e.target.value
-	cardCvc.textContent = cvc
-}
-
 const checkCvc = () => {
 	let cvcReg = /(^[0-9]{3}$)/
 	let emptyCondition = inputCvc.value.length == 0
@@ -156,36 +190,6 @@ const checkCvc = () => {
 	} else {
 		cvcDebug.textContent = ''
 		inputCvc.classList.remove('error-border')
-		return result
-	}
-}
-
-const updateNumber = e => {
-	let val = e.target.value
-	if (val.length <= 16) {
-		val = val.concat('0'.repeat(16 - val.length))
-		nrParts[0].textContent = val.slice(0, 4)
-		nrParts[1].textContent = val.slice(4, 8)
-		nrParts[2].textContent = val.slice(8, 12)
-		nrParts[3].textContent = val.slice(12)
-	}
-}
-
-const checkNumber = () => {
-	let nrReg = /^\d{16}$/
-	let emptyCondition = inputNumber.value.length == 0
-	let result = nrReg.test(inputNumber.value)
-	if (emptyCondition) {
-		numberDebug.textContent = 'Empty value'
-		inputNumber.classList.add('error-border')
-		return false
-	} else if (!result) {
-		numberDebug.textContent = 'Wrong format. Required 16 numbers'
-		inputNumber.classList.add('error-border')
-		return false
-	} else {
-		numberDebug.textContent = ''
-		inputNumber.classList.remove('error-border')
 		return result
 	}
 }
