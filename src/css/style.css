@@ -154,7 +154,7 @@ body main .main-form {
 }
 body main .main-form-active {
   position: relative;
-  margin: 100px auto;
+  margin: 50px auto;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -233,12 +233,14 @@ body main .main-complete-active .button-part {
   margin: 22px auto;
 }
 body .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: relative;
+  height: 2rem;
 }
 body .footer div {
-  padding: 10px 10px;
+  position: absolute;
+  margin: 0 10px;
+  bottom: 0;
+  left: 0;
   font-size: 1.1rem;
 }
 body .footer div a {
@@ -248,6 +250,17 @@ body .footer div a:visited {
   color: black;
 }
 
+@media (min-height: 690px) {
+  body .footer {
+    position: absolute;
+    height: 1.8rem;
+    bottom: 0;
+    left: 0;
+  }
+  body .footer div {
+    position: relative;
+  }
+}
 @media (min-width: 768px) {
   body main {
     display: flex;
@@ -283,9 +296,14 @@ body .footer div a:visited {
     margin: 50px;
   }
   body .footer {
+    position: absolute;
     bottom: 0;
     left: auto;
     right: 0;
+  }
+  body .footer div {
+    position: relative;
+    padding: 0 10px;
   }
 }
 @media (min-width: 1200px) {
