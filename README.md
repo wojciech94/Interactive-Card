@@ -1,6 +1,6 @@
 # Frontend Mentor - Interactive card details form solution
 
-This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Interactive card details form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -32,8 +32,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/wojciech94/Interactive-Card)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution Url](https://github.com/wojciech94/Interactive-Card)
+- Live Site URL: [Live Site Url](https://wojciech94.github.io/Interactive-Card/)
 
 ## My process
 
@@ -51,9 +51,10 @@ Users should be able to:
 ### What I learned
 
 In this challenge I:
+
 - learned how to use RegExp for form validation.
 
 ## Author
 
 - Website - [Wojciech94](https://github.com/wojciech94)
-- Frontend Mentor - [@wojciech94](https://www.frontendmentor.io/profile/wojciech94
+- Frontend Mentor - [@wojciech94](https://www.frontendmentor.io/profile/wojciech94)
